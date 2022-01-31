@@ -11,7 +11,7 @@ class Store {
         return readFileAsync('db/db.json', 'utf8')
     }
 
-    getNotes() {
+    getNotes () {
         return this.read().then((notes) => {
             let parsedNotes;
             try {
@@ -23,8 +23,8 @@ class Store {
         });
     }
 
-    write() {
-        return writeFileAsync('db/db.json', 'utf8');
+    write(note) {
+        return writeFileAsync('db/db.json', JSON.stringify(note));
     }
 
     addNote(note) {
@@ -32,12 +32,10 @@ class Store {
         if (!title || !text) {
             throw new Error('Required: Title & Text.');
         }
-        const newNote = { title, text, id: uuid()};
+
+        const newNote = { title, text };
 
         return this.getNotes()
-            .then(notes => [notes, newNote])
-            .then(updatedNote => this.write(updatedNote))
-            .then(() => newNote);
     }
 
     deleteNote(id) {
@@ -46,6 +44,5 @@ class Store {
             .then(filteredNotes => this.write(filteredNotes));
     }
 };
-
 
 module.exports= new Store();
