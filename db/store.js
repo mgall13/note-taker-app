@@ -5,6 +5,8 @@ const uuid = require('uuid');
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
+
+
 class Store {
 
     read() {
@@ -32,10 +34,13 @@ class Store {
         if (!title || !text) {
             throw new Error('Required: Title & Text.');
         }
-
-        const newNote = { title, text };
-
+        
+        const newNote = { title, text, id: Date.now};
+        
         return this.getNotes()
+        .then(notes => [notes, newNote])
+        .then(updateNotes => this.write(updateNotes))
+        .then(() => newNote);
     }
 
     deleteNote(id) {

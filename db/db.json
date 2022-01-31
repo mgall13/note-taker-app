@@ -1,1 +1,6 @@
-[[[[[[[[[[[{"title":"hello","text":"world"}],{"title":"feed","text":"kyro"}],{"title":"chips","text":"dip\n"}],{"title":"sdfa","text":"sadfsad "}],{"title":"asdf","text":"asdf "}],{"title":"fgdh","text":"dfgh"}],{"title":"Huy","text":"mt"}],{"title":"asdf","text":"asdf"}],{"title":"nwe","text":"afg"}],{"title":"sadf","text":"asdf"}],{"title":"asdf","text":"asdf"}]
+[
+    {
+        "title": "Hello",
+        "text": "World"
+    }
+]
